@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery Wildcard - Combobox</title>
+	<link rel="stylesheet" href="jquery-ui.css">
+	<style>
+
+	</style>
+	<script src="external/jquery/jquery.js"></script>
+	<script src="jquery-ui.js"></script>
+	<script src="jquery-ui-combobox-custom.js"></script>
+
+</head>
+<body>
+<h2>
+This is a modified version of the jQuery combobox tutorial: 
+<a href="https://jqueryui.com/resources/demos/autocomplete/combobox.html">Original jQuery Combobox</a>.
+</h2>
+<h3>
+I have added wild card search functionality to the original design.<br/>
+This allows a user to search for key words or characters out of order by typing a space between query parameters.<br/>
+Example typing "t a d" will show the combobox select option "Data".<br/>
+</h3>
+<h4>
+This is html is only here for demo purposes.  Please look at "jquery-ui-combobox-custom.js" to see wildcard code.<br/>
+If you have any suggesstions or would like to contribute to this feature, contact me via git-hub profile.
+</h4>
+
+<div id="comboboxDiv" >
+	<br clear="all"/>
+	<div style="float: left; margin-left: 0px; width: 300px;" id="selectLabel">Regular Combobox</div>
+	<div style="float: left; margin-left: 0px;">
+		<select id="combobox">
+			<OPTION>-- Select --</OPTION>
+			<OPTION>a sentence</OPTION>
+			<OPTION>because</OPTION>
+			<OPTION>I</OPTION>
+			<OPTION>Need Test</OPTION>
+			<OPTION>Data</OPTION>
+			<OPTION>SSome Caaracters</OPTION>
+			<OPTION>Repeat 1, 2, maybe 10 times</OPTION>
+		</select>
+	</div>
+</div>
+
+<br clear="all"/>
+
+<div id="wildCardDiv" >
+	<br clear="all"/>
+	<div style="float: left; margin-left: 0px; width: 300px;"  id="selectLabel">Wildcard Combobox</div>
+	<div style="float: left; margin-left: 0px;">
+		<select id="wildCard">
+			<OPTION>-- Select --</OPTION>
+			<OPTION>a sentence</OPTION>
+			<OPTION>because</OPTION>
+			<OPTION>I</OPTION>
+			<OPTION>Need Test</OPTION>
+			<OPTION>Data</OPTION>
+			<OPTION>SSome Caaracters</OPTION>
+			<OPTION>Repeat 1, 2, maybe 10 times</OPTION>			
+		</select>
+	</div>				
+</div>
+
+<div>
+	<button id="toggle">Show underlying select</button>
+	<br clear="all"/>
+</div>
+
+<script type="text/javascript">
+// global variables
+var defaultSelect = "-- Select --";
+
+	$(document).ready(function() {
+		//Initialize combobox with the wildcard function override
+		$( "#wildCard" ).combobox({fnOverride: "wildcard"});
+		$( "#wildCard" ).val(defaultSelect);
+		$( "#wildCard" ).width("200px");
+		$( "#wildCardDiv .ui-autocomplete-input" ).width("200px");		
+		
+		$( "#combobox" ).combobox();
+		$( "#combobox" ).val(defaultSelect);
+		$( "#combobox" ).width("200px");
+		$( "#comboboxDiv .ui-autocomplete-input" ).width("200px");
+		
+		$( "button" ).height("12px");
+		
+		$("#toggle").click(function() {
+             $( "#combobox" ).toggle();
+			 $( "#wildCard" ).toggle();
+        });
+
+		$( "#wildCard" ).focus();
+	});
+</script>
+
+</body>
+</html>
