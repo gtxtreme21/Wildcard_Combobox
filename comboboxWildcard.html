@@ -32,20 +32,30 @@ If you have any suggesstions or would like to contribute to this feature, contac
 </p>
 </h4>
 
+<br clear="all"/>
 <div id="comboboxParentDiv" style="width: 99%;">
+
+<p>
+I have pre populated the combobox text with the example. Just click left or right arrow key to see matching data.
+</p>
+
 	<div id="comboboxDiv" style="float: left;">
 
 		<div style="float: left; margin-left: 0px;" id="selectLabel">Regular Combobox: </div>
 		<div style="float: left; margin-left: 0px;">
 			<select id="combobox">
-				<OPTION>-- Select --</OPTION>
-				<OPTION>a sentence</OPTION>
-				<OPTION>because</OPTION>
-				<OPTION>I</OPTION>
-				<OPTION>Need Test</OPTION>
+				<OPTION></OPTION>
+				<OPTION>item-b1-001:data</OPTION>
+				<OPTION>item-1-002:atad</OPTION>
+				<OPTION>item-2-001b</OPTION>
+				<OPTION>item-2-111</OPTION>
+				<OPTION>item-2-222</OPTION>
+				<OPTION>i-11-001 q</OPTION>
+				<OPTION>i-p1-001p</OPTION>
+				<OPTION>i-p1-p01p</OPTION>
+				<OPTION>pi-p21-p01</OPTION>
+				<OPTION>pi-p-21-p01</OPTION>
 				<OPTION>Data</OPTION>
-				<OPTION>SSome Caaracters</OPTION>
-				<OPTION>Repeat 1, 2, maybe 10 times</OPTION>
 			</select>
 		</div>
 	</div>
@@ -53,14 +63,18 @@ If you have any suggesstions or would like to contribute to this feature, contac
 		<div style="float: left;" id="selectLabel">Wildcard Combobox: </div>
 		<div style="float: left;">
 			<select id="wildCard">
-				<OPTION>-- Select --</OPTION>
-				<OPTION>a sentence</OPTION>
-				<OPTION>because</OPTION>
-				<OPTION>I</OPTION>
-				<OPTION>Need Test</OPTION>
-				<OPTION>Data</OPTION>
-				<OPTION>SSome Caaracters</OPTION>
-				<OPTION>Repeat 1, 2, maybe 10 times</OPTION>			
+				<OPTION></OPTION>
+				<OPTION>item-b1-001:data</OPTION>
+				<OPTION>item-1-002:atad</OPTION>
+				<OPTION>item-2-001b</OPTION>
+				<OPTION>item-2-111</OPTION>
+				<OPTION>item-2-222</OPTION>
+				<OPTION>i-11-001 q</OPTION>
+				<OPTION>i-p1-001p</OPTION>
+				<OPTION>i-p1-p01p</OPTION>
+				<OPTION>pi-p21-p01</OPTION>
+				<OPTION>pi-p-21-p01</OPTION>
+				<OPTION>Data</OPTION>			
 			</select>
 		</div>				
 	</div>
@@ -94,7 +108,7 @@ If you have any suggesstions or would like to contribute to this feature, contac
 
 <script type="text/javascript">
 // global variables
-var defaultSelect = "-- Select --";
+var defaultSelect = "";
 
 	$(document).ready(function() {
 		//Initialize combobox with the wildcard function override
@@ -116,8 +130,54 @@ var defaultSelect = "-- Select --";
 			 $( "#wildCard" ).toggle();
         });
 
-		$( "#wildCard" ).focus();
+		$( "#combobox" ).focus();
+		
+		scrollAndInit();
+		$( "#combobox" ).focus();
 	});
+	
+	$(document).keypress(function(e) {
+		if(e.which == 13) {
+			if ($( "#comboboxDiv .ui-autocomplete-input" ).is(":focus")) {
+	$( "#comboboxDiv .ui-autocomplete-input" ).focus();
+	$( "#comboboxDiv .ui-autocomplete-input" ).trigger({type: 'keypress', which: 35, keyCode: 35});			
+				//$( "#comboboxDiv .ui-combobox-button" ).button().trigger("click");
+			} else if ($( "#wildCardDiv .ui-autocomplete-input" ).is(":focus")) {
+	$( "#wildCardDiv .ui-autocomplete-input" ).focus($( "#wildCardDiv .ui-autocomplete-input" ).val());
+	$( "#wildCardDiv .ui-autocomplete-input" ).trigger({type: 'keypress', which: 35, keyCode: 35});			
+				//$( "#wildCardDiv .ui-combobox-button" ).button().trigger("click");
+			} else {
+				//nothing to do
+			}		
+		}
+	});
+
+function initComboBoxes() {
+$( "#combobox" ).focus();
+
+	$( "#comboboxDiv .ui-autocomplete-input" ).val("data");
+	$( "#combobox" ).val("data");
+	$( "#combobox" ).trigger("change");
+	$( "#comboboxDiv .ui-autocomplete-input" ).focus();
+	$( "#comboboxDiv .ui-autocomplete-input" ).trigger({type: 'keypress', which: 35, keyCode: 35});
+	
+	$( "#wildCardDiv .ui-autocomplete-input" ).val("t a d");
+	$( "#wildCard" ).val("t a d");
+	$( "#wildCard" ).trigger("change");
+	$( "#wildCardDiv .ui-autocomplete-input" ).focus();
+	$( "#wildCardDiv .ui-autocomplete-input" ).trigger({type: 'keypress', which: 35, keyCode: 35}); 
+	$( "#wildCardDiv .ui-autocomplete-input" ).focus($( "#wildCardDiv .ui-autocomplete-input" ).val());
+	$( "#wildCardDiv .ui-autocomplete-input" ).trigger({type: 'keypress', which: 35, keyCode: 35});
+}
+	
+function scrollAndInit() {
+	//$("html, body").animate({ scrollTop: $("#comboboxParentDiv").scrollTop() }, 1000);
+  //$("html, body").animate({ scrollTop: 600 }, 2500);
+  //$( window ).scroll();
+  initComboBoxes();
+}
+
+
 </script>
 
 </body>
