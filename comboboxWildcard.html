@@ -32,43 +32,44 @@ If you have any suggesstions or would like to contribute to this feature, contac
 </p>
 </h4>
 
-<div id="comboboxDiv" >
-	<br clear="all"/>
-	<div style="float: left; margin-left: 0px; width: 300px;" id="selectLabel">Regular Combobox</div>
-	<div style="float: left; margin-left: 0px;">
-		<select id="combobox">
-			<OPTION>-- Select --</OPTION>
-			<OPTION>a sentence</OPTION>
-			<OPTION>because</OPTION>
-			<OPTION>I</OPTION>
-			<OPTION>Need Test</OPTION>
-			<OPTION>Data</OPTION>
-			<OPTION>SSome Caaracters</OPTION>
-			<OPTION>Repeat 1, 2, maybe 10 times</OPTION>
-		</select>
+<div id="comboboxParentDiv" style="width: 99%;">
+	<div id="comboboxDiv" style="float: left;">
+
+		<div style="float: left; margin-left: 0px;" id="selectLabel">Regular Combobox: </div>
+		<div style="float: left; margin-left: 0px;">
+			<select id="combobox">
+				<OPTION>-- Select --</OPTION>
+				<OPTION>a sentence</OPTION>
+				<OPTION>because</OPTION>
+				<OPTION>I</OPTION>
+				<OPTION>Need Test</OPTION>
+				<OPTION>Data</OPTION>
+				<OPTION>SSome Caaracters</OPTION>
+				<OPTION>Repeat 1, 2, maybe 10 times</OPTION>
+			</select>
+		</div>
+	</div>
+	<div id="wildCardDiv" style="float: right;">		
+		<div style="float: left;" id="selectLabel">Wildcard Combobox: </div>
+		<div style="float: left;">
+			<select id="wildCard">
+				<OPTION>-- Select --</OPTION>
+				<OPTION>a sentence</OPTION>
+				<OPTION>because</OPTION>
+				<OPTION>I</OPTION>
+				<OPTION>Need Test</OPTION>
+				<OPTION>Data</OPTION>
+				<OPTION>SSome Caaracters</OPTION>
+				<OPTION>Repeat 1, 2, maybe 10 times</OPTION>			
+			</select>
+		</div>				
 	</div>
 </div>
 
 <br clear="all"/>
 
-<div id="wildCardDiv" >
+<div style="float: right; margin-left: 209px;">
 	<br clear="all"/>
-	<div style="float: left; margin-left: 0px; width: 300px;"  id="selectLabel">Wildcard Combobox</div>
-	<div style="float: left; margin-left: 0px;">
-		<select id="wildCard">
-			<OPTION>-- Select --</OPTION>
-			<OPTION>a sentence</OPTION>
-			<OPTION>because</OPTION>
-			<OPTION>I</OPTION>
-			<OPTION>Need Test</OPTION>
-			<OPTION>Data</OPTION>
-			<OPTION>SSome Caaracters</OPTION>
-			<OPTION>Repeat 1, 2, maybe 10 times</OPTION>			
-		</select>
-	</div>				
-</div>
-
-<div>
 	<button id="toggle">Show underlying select</button>
 	<br clear="all"/>
 </div>
