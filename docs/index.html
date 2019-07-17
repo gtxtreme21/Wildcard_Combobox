@@ -1,15 +1,210 @@
 <html>
 <body>
-# Wildcard_Combobox
-# Author: Gary Tipton
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery Wildcard - Combobox</title>
+	<link rel="stylesheet" href="jquery-ui.css">
+	<style>
 
+	</style>
+	<script src="../external/jquery/jquery.js"></script>
+	<script src="../jquery-ui.js"></script>
+	<script src="../jquery-ui-combobox-custom.js"></script>
+</head>
+<body bgcolor="#E7FFE7">
+    <section class="page-header">
+      <h1 class="project-name">Wildcard_Combobox</h1>
+      <h2 class="project-tagline">Gary&#39;s Wildcard Combobox</h2>
+      <a href="https://github.com/gtxtreme21/Wildcard_Combobox" class="btn">View on GitHub</a>
+      <a href="https://github.com/gtxtreme21/Wildcard_Combobox/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/gtxtreme21/Wildcard_Combobox/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+<p>
 Wildcard jquery combobox is the same as the regular jquery comobo box v. 1.12 except it also provides wild card search functionality 
 if using the wild card funciton override.  Please see the html for an example of how to use this tool.
-https://github.com/gtxtreme21/Wildcard_Combobox/tree/master/comboboxWildcard.html
+<a href="https://github.com/gtxtreme21/Wildcard_Combobox/tree/master/comboboxWildcard.html">Wildcard_Combobox Demo</a>
 
-Please note that this code is a modification of the existing jquery combobox: https://jqueryui.com/resources/demos/autocomplete/combobox.html
-
+Please note that this code is a modification of the existing jquery combobox: <a href="https://jqueryui.com/resources/demos/autocomplete/combobox.html">Original Combobox</a>
+</p>
+<p>
 Thanks for looking,
-Gary Tipton
-</body>
+Gary Tipton</p>
+
+<p>This is a modified version of the jQuery combobox tutorial: </p>
+<a href="https://jqueryui.com/resources/demos/autocomplete/combobox.html">Original jQuery Combobox</a>.
+
+<h3>
+<p>
+I have added wild card search functionality to the original design.<br/>
+This allows a user to search for key words or characters out of order by typing a space between query parameters.<br/>
+Example typing "t a d" will show the combobox select option "Data".<br/>
+</p>
+</h3>
+<h4>
+<p>
+This is html is only here for demo purposes.  Please look at "jquery-ui-combobox-custom.js" to see wildcard code.<br/>
+If you have any suggesstions or would like to contribute to this feature, contact me via git-hub profile.
+</p>
+</h4>
+
+<br clear="all"/>
+<div id="comboboxParentDiv" style="width: 99%;">
+
+<p>
+I have pre populated the combobox text with the example. Just click left or right arrow key to see matching data.
+</p>
+
+	<div id="comboboxDiv" style="float: left;">
+
+		<div style="float: left; margin-left: 0px;" id="selectLabel">Regular Combobox: </div>
+		<div style="float: left; margin-left: 0px;">
+			<select id="combobox">
+				<OPTION></OPTION>
+				<OPTION>item-b1-001:data</OPTION>
+				<OPTION>item-1-002:atad</OPTION>
+				<OPTION>item-2-001b</OPTION>
+				<OPTION>item-2-111</OPTION>
+				<OPTION>item-2-222</OPTION>
+				<OPTION>i-11-001 q</OPTION>
+				<OPTION>i-p1-001p</OPTION>
+				<OPTION>i-p1-p01p</OPTION>
+				<OPTION>pi-p21-p01</OPTION>
+				<OPTION>pi-p-21-p01</OPTION>
+				<OPTION>Data</OPTION>
+			</select>
+		</div>
+	</div>
+	<div id="wildCardDiv" style="float: right;">		
+		<div style="float: left;" id="selectLabel">Wildcard Combobox: </div>
+		<div style="float: left;">
+			<select id="wildCard">
+				<OPTION></OPTION>
+				<OPTION>item-b1-001:data</OPTION>
+				<OPTION>item-1-002:atad</OPTION>
+				<OPTION>item-2-001b</OPTION>
+				<OPTION>item-2-111</OPTION>
+				<OPTION>item-2-222</OPTION>
+				<OPTION>i-11-001 q</OPTION>
+				<OPTION>i-p1-001p</OPTION>
+				<OPTION>i-p1-p01p</OPTION>
+				<OPTION>pi-p21-p01</OPTION>
+				<OPTION>pi-p-21-p01</OPTION>
+				<OPTION>Data</OPTION>			
+			</select>
+		</div>				
+	</div>
+</div>
+
+<br clear="all"/>
+
+<div style="float: right; margin-left: 209px;">
+	<br clear="all"/>
+	<button id="toggle">Show underlying select</button>
+	<br clear="all"/>
+</div>
+
+<br clear="all"/>
+<div>
+	<div class="floatleft" style="background-color: #E7EEE7;">
+	<code>
+			//Initialize combobox normally
+			<br clear="all"/>
+			$( "#combobox" ).combobox();
+	</code>
+	</div>
+	<div class="floatleft" style="background-color: #E7EEE7;">
+		<code>
+			//Initialize combobox with the wildcard function override 
+			<br clear="all"/>
+			$( "#wildCard" ).combobox({fnOverride: "wildcard"});
+		</code>
+	</div>
+</div>
+
+<script type="text/javascript">
+// global variables
+var defaultSelect = "";
+
+	$(document).ready(function() {
+		//Initialize combobox with the wildcard function override
+		$( "#wildCard" ).combobox({fnOverride: "wildcard"});
+		$( "#wildCard" ).val(defaultSelect);
+		$( "#wildCard" ).width("200px");
+		$( "#wildCardDiv .ui-autocomplete-input" ).width("200px");		
+		
+		$( "#combobox" ).combobox();
+		$( "#combobox" ).val(defaultSelect);
+		$( "#combobox" ).width("200px");
+		$( "#comboboxDiv .ui-autocomplete-input" ).width("200px");
+		
+		$( "input[type=button]" ).height("12px");
+		$( ".ui-combobox-button" ).button().height("12px");
+		
+		$("#toggle").click(function() {
+             $( "#combobox" ).toggle();
+			 $( "#wildCard" ).toggle();
+        });
+
+		$( "#combobox" ).focus();
+		
+		scrollAndInit();
+		$( "#combobox" ).focus();
+	});
+	
+	$(document).keypress(function(e) {
+		if(e.which == 13) {
+			if ($( "#comboboxDiv .ui-autocomplete-input" ).is(":focus")) {
+	$( "#comboboxDiv .ui-autocomplete-input" ).focus();
+	$( "#comboboxDiv .ui-autocomplete-input" ).trigger({type: 'keypress', which: 35, keyCode: 35});			
+				//$( "#comboboxDiv .ui-combobox-button" ).button().trigger("click");
+			} else if ($( "#wildCardDiv .ui-autocomplete-input" ).is(":focus")) {
+	$( "#wildCardDiv .ui-autocomplete-input" ).focus($( "#wildCardDiv .ui-autocomplete-input" ).val());
+	$( "#wildCardDiv .ui-autocomplete-input" ).trigger({type: 'keypress', which: 35, keyCode: 35});			
+				//$( "#wildCardDiv .ui-combobox-button" ).button().trigger("click");
+			} else {
+				//nothing to do
+			}		
+		}
+	});
+
+function initComboBoxes() {
+$( "#combobox" ).focus();
+
+	$( "#comboboxDiv .ui-autocomplete-input" ).val("data");
+	$( "#combobox" ).val("data");
+	$( "#combobox" ).trigger("change");
+	$( "#comboboxDiv .ui-autocomplete-input" ).focus();
+	$( "#comboboxDiv .ui-autocomplete-input" ).trigger({type: 'keypress', which: 35, keyCode: 35});
+	
+	$( "#wildCardDiv .ui-autocomplete-input" ).val("t a d");
+	$( "#wildCard" ).val("t a d");
+	$( "#wildCard" ).trigger("change");
+	$( "#wildCardDiv .ui-autocomplete-input" ).focus();
+	$( "#wildCardDiv .ui-autocomplete-input" ).trigger({type: 'keypress', which: 35, keyCode: 35}); 
+	$( "#wildCardDiv .ui-autocomplete-input" ).focus($( "#wildCardDiv .ui-autocomplete-input" ).val());
+	$( "#wildCardDiv .ui-autocomplete-input" ).trigger({type: 'keypress', which: 35, keyCode: 35});
+}
+	
+function scrollAndInit() {
+	//$("html, body").animate({ scrollTop: $("#comboboxParentDiv").scrollTop() }, 1000);
+  //$("html, body").animate({ scrollTop: 600 }, 2500);
+  //$( window ).scroll();
+  initComboBoxes();
+}
+
+</script>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/gtxtreme21/Wildcard_Combobox">Wildcard_Combobox</a> is maintained by <a href="https://github.com/gtxtreme21">gtxtreme21 (Gary Tipton)</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a></span>
+				<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+			</footer>
+
+    </section>
+  
+  </body>
 </html>
