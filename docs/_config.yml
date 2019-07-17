@@ -1,8 +1,0 @@
-title: Garycode
-description: Gary's Coding Samples And Ideas
-google_analytics: 
-show_downloads: true
-theme: jekyll-theme-cayman
-
-gems:
-  - jekyll-mentions
